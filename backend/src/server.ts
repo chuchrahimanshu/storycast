@@ -8,6 +8,10 @@ import router from "src/routes/index.routes";
 // Configuration Section
 const app = express();
 
+// Middleware Section
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // Routing and Listening the Express Server
 app.use("/", router);
 app.listen(PORT, () => {

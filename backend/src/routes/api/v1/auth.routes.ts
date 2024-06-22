@@ -1,12 +1,12 @@
 // Import Section
 import express from "express";
-import authRouter from "./auth.routes";
+import { signUp } from "src/controllers/api/v1/auth.controller";
 
 // Configuration Section
 const router = express.Router();
 
-// Middleware Section
-router.use("/auth", authRouter);
+// Routes Section - Unauthenticated
+router.route("/signup").post(signUp);
 
 // Export Section
 export default router;
