@@ -12,12 +12,6 @@ const userSchema = new Schema<UserInterface>({
         required: true,
         trim: true,
     },
-    username: {
-        type: String,
-        required: true,
-        trim: true,
-        unique: true,
-    },
     email: {
         type: String,
         required: true,

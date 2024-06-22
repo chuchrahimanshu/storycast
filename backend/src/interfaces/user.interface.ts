@@ -3,7 +3,6 @@ import { ObjectId } from "mongoose";
 interface UserInterface {
     firstName: string;
     lastName: string;
-    username: string;
     email: string;
     password: string;
     isEmailVerified: boolean;
