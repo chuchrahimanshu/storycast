@@ -4,7 +4,8 @@
   "description": "StoryCast 🎧 is your new podcast buddy! 🌟 Made with React Native, Node.js, and MongoDB, it brings you endless podcasts on any topic. 🎶 Dive into mysteries, discover cooking tips, and explore new worlds - all with StoryCast! 📱",
   "main": "index.js",
   "scripts": {
-    "start": "tsnd --respawn --pretty --transpile-only src/server.ts"
+    "start": "tsnd --respawn -r tsconfig-paths/register --pretty --transpile-only src/server.ts",
+    "build": "tsc && tsc-alias"
   },
   "keywords": [
     "Podcast"
@@ -22,6 +23,8 @@
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.14.8",
     "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.10",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.5.2"
   }
 }

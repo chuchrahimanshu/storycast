@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { MONGODB_URI } from "../utils/variables.util";
+import { MONGODB_URI } from "src/utils/variables.util";
 
 (async () => {
   try {
