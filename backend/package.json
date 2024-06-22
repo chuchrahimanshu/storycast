@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "StoryCast 🎧 is your new podcast buddy! 🌟 Made with React Native, Node.js, and MongoDB, it brings you endless podcasts on any topic. 🎶 Dive into mysteries, discover cooking tips, and explore new worlds - all with StoryCast! 📱",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsnd --respawn --pretty --transpile-only src/server.ts"
+  },
+  "keywords": [
+    "Podcast"
+  ],
+  "author": "Himanshu Chuchra",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.8",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.2"
+  }
+}
