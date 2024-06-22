@@ -1,5 +1,7 @@
 // Import Section
 import express from "express";
+import "dotenv/config";
+import "./config/database.config";
 
 // Configuration Section
 const app = express();
