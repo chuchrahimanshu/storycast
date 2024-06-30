@@ -1,4 +1,5 @@
 import mongoose, { Model, Schema } from "mongoose";
+
 import { UserInterface } from "src/interfaces/user.interface";
 
 const userSchema = new Schema<UserInterface>({
@@ -30,11 +31,11 @@ const userSchema = new Schema<UserInterface>({
         // TODO: Add default URL after implementing Cloudinary
         url: {
             type: String,
-            required: true
+            // required: true
         },
         public_id: {
             type: String,
-            required: true
+            // required: true
         }
     },
 
