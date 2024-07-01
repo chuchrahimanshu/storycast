@@ -2,8 +2,9 @@
 import express from "express";
 import "dotenv/config";
 import "src/config/database.config";
-import { PORT } from "src/utils/variables.util";
+import "src/config/nodemailer.config"
 import router from "src/routes/index.routes";
+import { PORT } from "src/utils/variables.util";
 
 // Configuration Section
 const app = express();
