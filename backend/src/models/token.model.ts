@@ -1,8 +1,10 @@
 import mongoose, { Model, Schema } from "mongoose";
+import bcrypt from "bcryptjs";
 
-import { TokenInterface } from "src/interfaces/token.interface";
+import { TokenInterface, TokenMethodsInterface } from "src/interfaces/token.interface";
+import { BCRYPT_SALT_ROUNDS } from "src/utils/variables.util";
 
-const tokenSchema = new Schema<TokenInterface>({
+const tokenSchema = new Schema<TokenInterface, {}, TokenMethodsInterface>({
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
@@ -18,5 +20,17 @@ const tokenSchema = new Schema<TokenInterface>({
     }
 });
 
-const Token: Model<TokenInterface> = mongoose.model("Token", tokenSchema);
+tokenSchema.pre("save", async function(next){
+    if(this.isModified("emailVerification")){
+        const salt = await bcrypt.genSalt(Number(BCRYPT_SALT_ROUNDS));
+        this.emailVerification = await bcrypt.hash(this.emailVerification, salt);
+    }
+    next();
+});
+
+tokenSchema.methods.compareEmailVerificationToken = async function(token){
+    return await bcrypt.compare(token, this.emailVerification);
+}
+
+const Token: Model<TokenInterface, {}, TokenMethodsInterface> = mongoose.model("Token", tokenSchema);
 export { Token };

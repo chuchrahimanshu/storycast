@@ -2,8 +2,12 @@ import { ObjectId } from "mongoose";
 
 interface TokenInterface {
     user: ObjectId;
-    emailVerification: String;
+    emailVerification: string;
     createdAt: Date
 }
 
-export { TokenInterface };
+interface TokenMethodsInterface {
+    compareEmailVerificationToken(token: string): Promise<boolean>;
+}
+
+export { TokenInterface, TokenMethodsInterface };
