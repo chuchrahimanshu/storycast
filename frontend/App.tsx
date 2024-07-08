@@ -1,12 +1,8 @@
 import {FC} from 'react';
-import {Text, View} from 'react-native';
+import SignUp from './src/screens/auth/SignUp';
 
 const App: FC = () => {
-  return (
-    <View>
-      <Text>Hello World</Text>
-    </View>
-  );
+  return <SignUp />;
 };
 
 export default App;
