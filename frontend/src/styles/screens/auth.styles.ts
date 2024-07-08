@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../utils/colors.util';
+import {colors} from '../../utils/colors.util';
 
 export const styles = StyleSheet.create({
   container: {
@@ -41,7 +41,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 15,
   },
   navigateText: {
     color: colors.CONTRAST,
@@ -49,7 +48,13 @@ export const styles = StyleSheet.create({
   },
   navigateLink: {
     color: colors.SECONDARY,
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '600',
+  },
+  flexContainer: {
+    width: '100%',
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

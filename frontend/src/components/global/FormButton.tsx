@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 25,
+    marginTop: 17,
   },
   title: {
     color: colors.CONTRAST,

@@ -3,7 +3,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "src/": ["src/*"]
+      "@components/*": ["src/components/*"],
+      "@screens/*": ["src/screens/*"],
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@validators/*": ["src/validators/*"],
+      "src/*": ["src/*"]
     }
   }
 }

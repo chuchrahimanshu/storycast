@@ -8,9 +8,9 @@ import {Formik} from 'formik';
 import * as yup from 'yup';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import {colors} from '../../utils/colors.util';
-import FormButton from '../../components/global/FormButton';
-import {styles} from '../../styles/auth.styles';
+import {colors} from 'src/utils/colors.util';
+import FormButton from 'src/components/global/FormButton';
+import {styles} from 'src/styles/screens/auth.styles';
 
 interface SignUpInterface {
   name: string;
