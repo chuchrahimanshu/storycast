@@ -1,18 +1,16 @@
 // TODO: Divide this components in more reusable components
+// TODO: Design the best way to use Formik as a separate component.
+// TODO: Also design the folder structure to divide this code in multiple parts.
 
-import {FC} from 'react';
-import {
-  Button,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import {FC, useState} from 'react';
+import {Pressable, SafeAreaView, Text, TextInput, View} from 'react-native';
 import {Formik} from 'formik';
 import * as yup from 'yup';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import {colors} from '../../utils/colors.util';
+import FormButton from '../../components/global/FormButton';
+import {styles} from '../../styles/auth.styles';
 
 interface SignUpInterface {
   name: string;
@@ -46,6 +44,10 @@ const SignUp: FC = () => {
     password: '',
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleSignInNavigation = () => {};
+
   return (
     <SafeAreaView style={styles.container}>
       <Formik
@@ -75,47 +77,38 @@ const SignUp: FC = () => {
               onChangeText={handleChange('email')}
             />
             <Text style={styles.label}>Password</Text>
-            <TextInput
-              placeholder="Create a strong password"
-              placeholderTextColor={colors.INACTIVE_CONTRAST}
-              style={styles.input}
-              autoCapitalize="none"
-              secureTextEntry
-              value={values.password}
-              onChangeText={handleChange('password')}
-            />
-            <Button onPress={() => handleSubmit()} title="Sign Up" />
+            <View style={styles.iconContainer}>
+              <TextInput
+                placeholder="Create a strong password"
+                placeholderTextColor={colors.INACTIVE_CONTRAST}
+                style={styles.input}
+                autoCapitalize="none"
+                secureTextEntry={showPassword ? false : true}
+                value={values.password}
+                onChangeText={handleChange('password')}
+              />
+              <Pressable
+                style={styles.iconPress}
+                onPress={() => setShowPassword(prevState => !prevState)}>
+                <Icon
+                  name={showPassword ? 'eye-off' : 'eye'}
+                  color={colors.SECONDARY}
+                  size={22}
+                />
+              </Pressable>
+            </View>
+            <View style={styles.navigateLinkContainer}>
+              <Text style={styles.navigateText}>Already a member? </Text>
+              <Pressable onPress={handleSignInNavigation}>
+                <Text style={styles.navigateLink}>Sign In</Text>
+              </Pressable>
+            </View>
+            <FormButton title="Sign Up" onPress={handleSubmit} />
           </View>
         )}
       </Formik>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.PRIMARY,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  formContainer: {
-    width: '100%',
-    paddingHorizontal: 20,
-  },
-  input: {
-    borderWidth: 2,
-    borderColor: colors.SECONDARY,
-    height: 45,
-    borderRadius: 25,
-    color: colors.CONTRAST,
-    paddingHorizontal: 20,
-    marginBottom: 15,
-    marginTop: 8,
-  },
-  label: {
-    color: colors.CONTRAST,
-  },
-});
 
 export default SignUp;
