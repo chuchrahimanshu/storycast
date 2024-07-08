@@ -1,3 +1,5 @@
+// TODO: Divide this components in more reusable components
+
 import {FC} from 'react';
 import {
   Button,
@@ -8,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import {Formik} from 'formik';
+import * as yup from 'yup';
 
 import {colors} from '../../utils/colors.util';
 
@@ -16,6 +19,25 @@ interface SignUpInterface {
   email: string;
   password: string;
 }
+
+const signUpValidationSchema = yup.object({
+  name: yup
+    .string()
+    .trim('Name is missing!')
+    .required('Name is missing!')
+    .matches(/^[A-Za-z]+$/, 'Please provide a valid name'),
+  email: yup
+    .string()
+    .trim('Name is missing!')
+    .required('Email is missing!')
+    .email('Please provide a valid email address'),
+
+  // TODO: Add matches regular expression to both frontend and the backend.
+  password: yup
+    .string()
+    .trim('Name is missing!')
+    .required('Password is missing!'),
+});
 
 const SignUp: FC = () => {
   const initialState: SignUpInterface = {
@@ -30,7 +52,8 @@ const SignUp: FC = () => {
         initialValues={initialState}
         onSubmit={(values): void => {
           console.log(values);
-        }}>
+        }}
+        validationSchema={signUpValidationSchema}>
         {({handleSubmit, handleChange, values}) => (
           <View style={styles.formContainer}>
             <Text style={styles.label}>Full Name</Text>
