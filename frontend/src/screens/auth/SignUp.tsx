@@ -1,42 +1,17 @@
-// TODO: Divide this components in more reusable components
-// TODO: Design the best way to use Formik as a separate component.
-// TODO: Also design the folder structure to divide this code in multiple parts.
-
+// External Import Section
 import {FC, useState} from 'react';
 import {Pressable, SafeAreaView, Text, TextInput, View} from 'react-native';
 import {Formik} from 'formik';
-import * as yup from 'yup';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+// Internal Import Section
 import {colors} from 'src/utils/colors.util';
 import FormButton from 'src/components/global/FormButton';
 import {styles} from 'src/styles/screens/auth.styles';
+import {signUpValidationSchema} from 'src/validators/screens/auth.screen.validator';
+import {SignUpInterface} from 'src/interfaces/screens/auth.screen.interface';
 
-interface SignUpInterface {
-  name: string;
-  email: string;
-  password: string;
-}
-
-const signUpValidationSchema = yup.object({
-  name: yup
-    .string()
-    .trim('Name is missing!')
-    .required('Name is missing!')
-    .matches(/^[A-Za-z]+$/, 'Please provide a valid name'),
-  email: yup
-    .string()
-    .trim('Name is missing!')
-    .required('Email is missing!')
-    .email('Please provide a valid email address'),
-
-  // TODO: Add matches regular expression to both frontend and the backend.
-  password: yup
-    .string()
-    .trim('Name is missing!')
-    .required('Password is missing!'),
-});
-
+// Component Section
 const SignUp: FC = () => {
   const initialState: SignUpInterface = {
     name: '',
@@ -45,9 +20,9 @@ const SignUp: FC = () => {
   };
 
   const [showPassword, setShowPassword] = useState(false);
-
   const handleSignInNavigation = () => {};
 
+  // Returning the Component JSX
   return (
     <SafeAreaView style={styles.container}>
       <Formik
@@ -111,4 +86,5 @@ const SignUp: FC = () => {
   );
 };
 
+// Export Section
 export default SignUp;
