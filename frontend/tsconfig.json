@@ -9,6 +9,7 @@
       "@utils/*": ["src/utils/*"],
       "@interfaces/*": ["src/interfaces/*"],
       "@validators/*": ["src/validators/*"],
+      "@assets/*": ["src/assets/*"],
       "src/*": ["src/*"]
     }
   }

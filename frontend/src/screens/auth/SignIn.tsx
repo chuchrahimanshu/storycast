@@ -1,33 +1,32 @@
 // External Import Section
 import {FC, useState} from 'react';
 import {
+  Image,
   Pressable,
   SafeAreaView,
   Text,
   TextInput,
   View,
-  Image,
 } from 'react-native';
 import {Formik} from 'formik';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // Internal Import Section
+import {SignInInterface} from 'src/interfaces/screens/auth.screen.interface';
+import {signInValidationSchema} from 'src/validators/screens/auth.screen.validator';
 import {colors} from 'src/utils/colors.util';
-import FormButton from 'src/components/global/FormButton';
 import {styles} from 'src/styles/screens/auth.styles';
-import {signUpValidationSchema} from 'src/validators/screens/auth.screen.validator';
-import {SignUpInterface} from 'src/interfaces/screens/auth.screen.interface';
+import FormButton from '@components/global/FormButton';
 
 // Component Section
-const SignUp: FC = () => {
-  const initialState: SignUpInterface = {
-    name: '',
+const SignIn: FC = () => {
+  const initialState: SignInInterface = {
     email: '',
     password: '',
   };
-
   const [showPassword, setShowPassword] = useState(false);
-  const handleSignInNavigation = () => {};
+  const handleSignUpNavigation = () => {};
+  const handleForgetPassword = () => {};
 
   // Returning the Component JSX
   return (
@@ -42,17 +41,9 @@ const SignUp: FC = () => {
         onSubmit={(values): void => {
           console.log(values);
         }}
-        validationSchema={signUpValidationSchema}>
+        validationSchema={signInValidationSchema}>
         {({handleSubmit, handleChange, values}) => (
           <View style={styles.formContainer}>
-            <Text style={styles.label}>Full Name</Text>
-            <TextInput
-              placeholder=""
-              placeholderTextColor={colors.INACTIVE_CONTRAST}
-              style={styles.input}
-              value={values.name}
-              onChangeText={handleChange('name')}
-            />
             <Text style={styles.label}>Email Address</Text>
             <TextInput
               placeholder="example@example.com"
@@ -66,7 +57,7 @@ const SignUp: FC = () => {
             <Text style={styles.label}>Password</Text>
             <View style={styles.iconContainer}>
               <TextInput
-                placeholder="Create a strong password"
+                placeholder="Enter your password"
                 placeholderTextColor={colors.INACTIVE_CONTRAST}
                 style={styles.input}
                 autoCapitalize="none"
@@ -85,12 +76,21 @@ const SignUp: FC = () => {
               </Pressable>
             </View>
             <View style={styles.navigateLinkContainer}>
-              <Text style={styles.navigateText}>Already a member? </Text>
-              <Pressable onPress={handleSignInNavigation}>
-                <Text style={styles.navigateLink}>Sign In</Text>
-              </Pressable>
+              <View style={styles.formLinkContainer}>
+                <View style={styles.formLinkSubContainer}>
+                  <Text style={styles.navigateText}>New to StoryCast? </Text>
+                  <Pressable onPress={handleSignUpNavigation}>
+                    <Text style={styles.navigateLink}>Sign Up</Text>
+                  </Pressable>
+                </View>
+                <View style={styles.formLinkSubContainer}>
+                  <Pressable onPress={handleForgetPassword}>
+                    <Text style={styles.navigateLink}>Forget Password</Text>
+                  </Pressable>
+                </View>
+              </View>
             </View>
-            <FormButton title="Sign Up" onPress={handleSubmit} />
+            <FormButton title="Sign In" onPress={handleSubmit} />
           </View>
         )}
       </Formik>
@@ -98,5 +98,4 @@ const SignUp: FC = () => {
   );
 };
 
-// Export Section
-export default SignUp;
+export default SignIn;

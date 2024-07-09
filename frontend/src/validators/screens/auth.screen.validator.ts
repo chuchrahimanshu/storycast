@@ -19,3 +19,12 @@ export const signUpValidationSchema = yup.object({
       'Please follow all password rules',
     ),
 });
+
+export const signInValidationSchema = yup.object({
+  email: yup
+    .string()
+    .trim('Email address is missing!')
+    .required('Email address is required!')
+    .email('Please provide a valid email address'),
+  password: yup.string().required('Password is missing!'),
+});

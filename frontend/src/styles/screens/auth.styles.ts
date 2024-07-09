@@ -8,9 +8,13 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  logo: {
+    marginBottom: 50,
+  },
   formContainer: {
     width: '100%',
-    paddingHorizontal: 20,
+    paddingHorizontal: 25,
+    marginBottom: 150,
   },
   input: {
     borderWidth: 2,
@@ -47,14 +51,17 @@ export const styles = StyleSheet.create({
     fontSize: 14,
   },
   navigateLink: {
-    color: colors.SECONDARY,
+    color: colors.CONTRAST,
     fontSize: 14,
     fontWeight: '600',
   },
-  flexContainer: {
+  formLinkContainer: {
     width: '100%',
     paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  formLinkSubContainer: {
+    flexDirection: 'row',
   },
 });

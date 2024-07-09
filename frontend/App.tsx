@@ -1,8 +1,14 @@
+// External Import Section
 import {FC} from 'react';
-import SignUp from 'src/screens/auth/SignUp';
 
+// Internal Import Section
+// import SignUp from 'src/screens/auth/SignUp';
+import SignIn from 'src/screens/auth/SignIn';
+
+// Component Section
 const App: FC = () => {
-  return <SignUp />;
+  // Returning the Component JSX
+  return <SignIn />;
 };
 
 export default App;
